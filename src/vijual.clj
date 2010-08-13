@@ -1,6 +1,6 @@
 (ns vijual
   (:use clojure.contrib.math)
-  (:use clojure.contrib.seq-utils)
+  (:use [clojure.contrib.seq-utils :only (positions)])
   (:import (java.io File)
            (javax.imageio ImageIO)
            (java.awt Color)
@@ -488,8 +488,8 @@
 (defn shuffle-nodes
   "Randomly swaps two nodes of the graph"
   [pos nodes]
-  (let [a (rand-elt nodes)
-        b (rand-elt nodes)
+  (let [a (rand-nth nodes)
+        b (rand-nth nodes)
         an (pos a)
         bn (pos b)]
     (merge pos
